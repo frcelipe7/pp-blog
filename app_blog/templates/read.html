@@ -6,54 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pela Palavra</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-        function click_button (button) {
-            button.style.animation = "piscar-butao .1s";
-            button.addEventListener("animationend", () => {
-                const p_ = document.querySelector(".block .info-buttons .buttons .save p")
-                p_.innerHTML = "Salvo";
-                const button_salvo = document.querySelector(".block .info-buttons .buttons .button .salvo")
-                const salvar = document.querySelector(".block .info-buttons .buttons .button .salvar")
-                console.log(button_salvo)
-                salvar.style.display = 'none';
-                salvar.style.opacity = '0'
-                button_salvo.style.display = "block";
-                button_salvo.style.opacity = "1";
-                button.style.animation = "piscar-butao .1s reverse";
-                button.classList.remove('save')
-                button.classList.add('saved')
-            })
-        }
-        addEventListener("DOMContentLoaded", () => {
-            const button = document.querySelector(".block .info-buttons .buttons .save")
-            const info_buttons = document.querySelector(".block .text-content .info-buttons");
-            const side_bar_left = document.querySelector(".sidebar-right")
-
-            document.addEventListener("scroll", () => {
-                // console.log(info_buttons.offsetTop)
-                // console.log(document.body.offsetHeight)
-                // console.log(document.body.offsetHeight - info_buttons.offsetTop)
-                var topo = 0;
-
-                if (info_buttons.offsetTop - window.scrollY - 100 <= side_bar_left.offsetHeight) {
-                    side_bar_left.style.position = 'static';
-                    side_bar_left.style.top = `${topo}px`;
-                    // console.log(side_bar_left)
-                    // console.log(side_bar_left.offsetHeight)
-                    // side_bar_left.innerHTML = side_bar_left.offsetHeight
-                } else {
-                    side_bar_left.style.position = 'fixed';
-                    topo = window.scrollY + side_bar_left.offsetHeight
-                    console.log(topo)
-                }
-
-                // console.log(window.scrollY)
-                // console.log(window.innerHeight)
-                // console.log(info_buttons.offsetTop - window.scrollY - 100)
-                // console.log(window.print())
-            })
-        })
-    </script>
+    <script src="../static/js/read.js"></script>
+    
 </head>
 <body>
     <nav class="topo-fixed">
@@ -65,7 +19,7 @@
         </div>
     </nav>
 
-    <div class="block">
+    <section class="block">
         <div class="text-content">
             <div class="text-title">Título do texto</div>
             <div class="verse-and-reference">
@@ -145,9 +99,9 @@
             <div class="info-buttons">
                 <p>Publicado em: 10 de março de 2004</p>
                 <div class="buttons">
-                    <div class="save button" onclick="click_button(this)">
+                    <div class="save button">
                         <p>Salvar</p>
-                        <svg class="salvar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                             <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com 
                                 License - https://fontawesome.com/license (Commercial License) Copyright 
                                 2022 Fonticons, Inc. 
@@ -157,7 +111,10 @@
                             362.5 0 336 0zM336 452L192 368l-144 84V54C48 50.63 50.63 48 53.1 48h276C333.4 
                             48 336 50.63 336 54V452z"/>
                         </svg>
-                        <svg class="salvo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                    </div>
+                    <div style="display: none;" class="salvo button">
+                        <p>Salvo</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                             <!--! Font Awesome Pro 6.1.1 by @fontawesome -
                                 https://fontawesome.com License - https://fontawesome.com/license 
                                 (Commercial License) Copyright 2022 Fonticons, Inc. 
@@ -165,7 +122,6 @@
                             <path d="M384 48V512l-192-112L0 512V48C0 21.5 21.5 0 48 0h288C362.5 
                             0 384 21.5 384 48z"/>
                         </svg>
-
                     </div>
                     <div class="share button">
                         <p>Compartilhar</p>
@@ -187,8 +143,18 @@
             </div>
         </div>
 
-        <div class="sidebar-right"></div>
-    </div>
+        <div class="content-sidebar">
+            <div class="sidebar-right"></div>
+        </div>
+    </section>
+
+    <!-- <section class="comments">
+        <div class="see-comments">
+            <h2>Comentários</h2>
+        </div>
+
+        <div class="comentar"></div>
+    </section> -->
 
     <footer></footer>
 </body>
