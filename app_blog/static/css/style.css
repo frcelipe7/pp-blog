@@ -37,20 +37,49 @@ section.devocionais .content {
 }
 
 section.devocionais .devocional-block {
-    width: 100%; height: 100px;
+    width: 100%; height: 200px;
     border-radius: 5px;
     border: 1px solid var(--principal);
     /* margin: 5px; */
-    padding: 10px;
-    position: relative;
+    background: url("../../static/images/c.jpg") no-repeat;
+    object-fit: cover;
+    background-position: center -30px;
+    background-size: 300px;
+    display: flex;
+    flex-direction: column;
 }
 
 section.devocionais .devocional-block h2 {
     font-family: 'Bebas Neue', cursive;
+    width: 100%; height: 100px;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,1) 0%,
+        rgba(255, 255, 255, 0.787) 30%,
+        rgba(255, 255, 255, 0.522) 50%,
+        rgba(230,230,230,0) 100%
+    );
+    text-align: center;
+    padding: 10px;
+    font-size: 20pt;
+}
+
+section.devocionais .devocional-block .link {
+    border-radius: 0 0 5px 5px;
+    width: 100%; height: 60px;
+    background-color: var(--sexta);
+    margin-top: 40px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--principal);
+    
 }
 
 section.devocionais .devocional-block a {
     text-decoration: none;
+    width: 100%;
 }
 
 section.devocionais .devocional-block a button {
@@ -71,11 +100,13 @@ section.devocionais .devocional-block a button:hover {
 }
 
 section.devocionais .devocional-block a button p {
-    text-align: center; font-size: 15px;
-    margin-top: -2px; 
+    text-align: center; font-size: 12pt;
+    margin-top: -1px; 
     font-weight: 500;
 }
 
 section.devocionais .devocional-block a button svg {
-    width: 20px; height: 20px;
+    width: 17px; height: 17px;
+    margin-top: 0px; 
+
 }
