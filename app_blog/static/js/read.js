@@ -1,8 +1,14 @@
-function verify_if_saved(save_button, clicked=false) {
-    if (save_button.dataset.saved == 'false') {
-        if (clicked == true) {
+function verify_if_saved(save_button, clicked) {
+    if (clicked == true) {
+        if (save_button.dataset.saved == 'false') {
             save_button.dataset.saved = 'true';
+        } else {
+            save_button.dataset.saved = 'false'
         }
+        
+    } 
+        
+    if (save_button.dataset.saved == 'false') {
         save_button.innerHTML = `
             <p>Salvar</p>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -17,9 +23,6 @@ function verify_if_saved(save_button, clicked=false) {
             </svg>
         `;
     } else {
-        if (clicked == true) {
-            save_button.dataset.saved = 'false';
-        }
         save_button.innerHTML = `
             <p>Salvo</p>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -40,7 +43,7 @@ addEventListener("DOMContentLoaded", () => {
     const info_buttons = document.querySelector(".block .text-content .info-buttons");
     const side_bar_left = document.querySelector(".sidebar-right");
 
-    verify_if_saved(save_button);
+    verify_if_saved(save_button, clicked=false);
 
     save_button.addEventListener("click", () => {
         verify_if_saved(save_button, clicked=true);

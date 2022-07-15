@@ -4,7 +4,6 @@
     height: 100%; width: 100%;
     padding: 50px 100px;
     padding-top: 50px;
-    margin-top: 50px;
     position: relative;
     display: flex;
     align-items: stretch;
@@ -20,18 +19,23 @@
 /*  TEXT-CONTENT  */
 
 .text-content {
-    height: auto; max-width: 800px;
+    height: auto; width: 100%;
     background-color: var(--sexta);
     border-radius: 5px;
     padding: 70px 0;
     margin-bottom: 100px;
     float: right;
+    position: relative;
+    border: 1px solid var(--quinta);
+    border-top: 20px solid var(--quinta);
+    box-shadow: 0 5px 1em var(--escura);
 }
 
 .text-content .text-title {
     font-size: 30pt; text-align: center;
     font-weight: 500;
     font-family: 'Bebas Neue', cursive;
+    z-index: 100;
 }
 
 .text-content .verse-and-reference {
@@ -113,7 +117,7 @@
 }
 
 /*  SIDEBAR  */
-
+/* 
 .content-sidebar {
     width: auto; 
     position: relative;
@@ -127,4 +131,4 @@
     background-color: var(--quinta);
     margin-bottom: 100px;
     border-radius: 5px;
-}
+} */
