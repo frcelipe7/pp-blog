@@ -1,13 +1,15 @@
 header {
     /* background-color: var(--principal); */
     width: 100%; height: 400px;
+    background-color: var(--quinta);
 }
 
 section.devocionais {
     width: 90%; height: auto;
     margin: auto;
     padding: 30px;
-    border-top: 1px solid var(--principal);
+    border-top: 1px solid var(--quinta);
+    margin-top: 50px;
 }
 
 section.devocionais h1 {
@@ -35,6 +37,11 @@ section.devocionais .content {
         width: 95%;
     }
 }
+@media (max-width: 800px) {
+    section.devocionais .content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 section.devocionais .devocional-block {
     width: 100%; height: 200px;
@@ -44,7 +51,7 @@ section.devocionais .devocional-block {
     background: url("../images/c.jpg") no-repeat;
     object-fit: cover;
     background-position: center -30px;
-    background-size: 300px;
+    background-size: 400px;
     display: flex;
     flex-direction: column;
 }
@@ -101,7 +108,7 @@ section.devocionais .devocional-block a button:hover {
 
 section.devocionais .devocional-block a button p {
     text-align: center; font-size: 12pt;
-    margin-top: -1px; 
+    margin-top: 0px; 
     font-weight: 500;
 }
 

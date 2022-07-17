@@ -57,10 +57,41 @@
     font-size: 19px;
 }
 
-.text-content .text p {
+.text-content .text {
     text-align: justify;
     margin: 0 70px;
 }
+
+.text-content .text h1
+{
+    font-size: 18pt;
+    font-weight: 600;
+}
+
+.text-content .text h2
+{
+    font-size: 16pt;
+    font-weight: 600;
+}
+
+.text-content .text strong 
+{
+    font-weight: bold;
+}
+
+.text-content .text em
+{
+    font-style: italic;
+    font-weight: 500;
+    font-size: 12pt;
+}
+
+.text-content .text strong em
+{
+    font-weight: bold;
+    font-style: italic;
+}
+
 
 /*  INFO-BUTTONS  */
 
@@ -86,6 +117,7 @@
     padding: 0 15px;
     transition: .2s;
     cursor: pointer;
+    border: 1px solid transparent
 }
 
 .text-content .info-buttons .buttons .button[bye] {
@@ -103,6 +135,7 @@
 
 .text-content .info-buttons .buttons .button:hover {
     background-color: var(--sexta);
+    border: 1px solid var(--quinta);
 }
 
 
@@ -115,20 +148,3 @@
     width: 20px; height: 20px;
     margin-left: 5px;
 }
-
-/*  SIDEBAR  */
-/* 
-.content-sidebar {
-    width: auto; 
-    position: relative;
-}
-
-.sidebar-right {
-    width: 300px; height: 500px;
-    position: sticky;
-    z-index: 100;
-    top: 100px;
-    background-color: var(--quinta);
-    margin-bottom: 100px;
-    border-radius: 5px;
-} */

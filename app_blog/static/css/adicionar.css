@@ -1,0 +1,116 @@
+section.content-form {
+    width: 100%; height: auto;
+    margin-top: 50px;
+    padding: 0 100px;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+section.content-form form {
+    width: 65%;
+    background-color: var(--sexta);
+    padding: 30px;
+
+}
+
+.content-form form .line {
+    display: flex;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+/* label */
+.content-form form .line label {
+    position: absolute;
+    left: 10px;
+    top: 3px;
+    transition: .2s;
+    cursor: text;
+}
+
+.content-form form .with-textarea label {
+    top: 10px;
+}
+
+.content-form form .image label,
+.content-form form .image input {
+    cursor: pointer;
+}
+
+.content-form form .image label {
+    top: -17px;
+    font-size: 10pt;
+    left: 8px;
+}
+
+/* input e textarea */
+.content-form form .line input {
+    height: 30px;
+    padding: 0 10px;
+    width: 350px;
+    outline: none;
+    transition: .2s;
+    border-radius: 5px;
+    border: 2px solid var(--principal);
+}
+
+/* .content-form form .line input[type=text] {} */
+.content-form form input[type=text]:not(:placeholder-shown),
+.content-form form input[type=text]:focus {
+    border-color: var(--quinta);
+    border-radius: 15px;
+}
+
+.content-form form input[type=text]:not(:placeholder-shown) ~ label,
+.content-form form input[type=text]:focus ~ label {
+    top: -17px;
+    font-size: 10pt;
+    left: 8px;
+}
+
+.content-form form .line textarea {
+    padding: 10px;
+    width: 350px;
+    resize: vertical;
+    outline: none;
+    border: 2px solid var(--principal);
+    border-radius: 0px;
+}
+
+.content-form form .line textarea:not(:placeholder-shown),
+.content-form form .line textarea:focus {
+    border-color: var(--quinta);
+    transition: .2s;
+    border-radius: 5px;
+}
+
+.content-form form .line textarea:not(:placeholder-shown) ~ label,
+.content-form form .line textarea:focus ~ label {
+    top: -18px;
+    font-size: 10pt;
+    left: 8px;
+}
+
+.content-form form .text textarea {
+    width: 100%;
+}
+
+
+
+/*  SIDEBAR RIGHT  */
+
+.content-sidebar {
+    width: auto; 
+    position: relative;
+}
+
+.sidebar-right {
+    width: 300px; height: 500px;
+    position: sticky;
+    z-index: 100;
+    top: 100px;
+    background-color: var(--quinta);
+    border-radius: 5px;
+}

@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import all_classes
 
-# Register your models here.
+
+for i in all_classes:
+    admin.site.register(i)

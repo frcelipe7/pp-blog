@@ -1,0 +1,64 @@
+{% extends 'app_blog/layout.html' %}
+{% load static %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/adicionar.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <section class="content-form">
+        <form action="adicionar" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{message}}
+            <div class="teme line">
+                <input maxlength="30" type="text" name="theme" id="theme" placeholder=" ">
+                <label for="theme">Tema</label>
+            </div>
+            <!-- <div class="image line">
+                <input type="file" name="image" id="image" placeholder=" " required="False">
+                <label for="image">Imagem</label>
+            </div> -->
+            <div class="verse line with-textarea">
+                <textarea name="verse" id="verse" cols="30" rows="10" placeholder=" "></textarea>
+                <label for="verse">Versículo</label>
+            </div>
+            <div class="reference line">
+                <input type="text" name="reference" id="reference" placeholder=" ">
+                <label for="reference">Referência</label>
+            </div>
+            <div class="text line with-textarea">
+                <textarea name="text" id="text" cols="30" rows="10" placeholder=" "></textarea>
+                <label for="text">Texto</label>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+        <div class="content-sidebar">
+            <div class="sidebar-right demo">
+                <p class="subtema">Subtema: <pre id="subtema-demo"></pre></p>
+                <p class="quebrar-linha">Quebrar linha: <pre id="quebrar-linha-demo">r</pre></p>
+                <p class="negrito">Negrito: <pre id="negrito"></pre></p>
+                <p class="italico">Italico: <pre id="italico"></pre></p>
+                <p class="link">Link: <pre id="link"></pre></p>
+            </div>
+        </div>
+    </section>
+    <script>
+        const quebrar_linha = document.getElementById("quebrar-linha-demo");
+        quebrar_linha.innerText = '(texto)<br>';
+
+        const subtema = document.getElementById("subtema-demo");
+        subtema.innerText = '# (texto)';
+
+        const negrito = document.getElementById("negrito");
+        negrito.innerText = '**(texto)**';
+
+        const italico = document.getElementById("italico");
+        italico.innerText = '*(texto)*';
+
+        const link = document.getElementById("link");
+        link.innerText = '[Texto aqui](https://Link-aqui)'
+        
+    </script>
+{% endblock %}

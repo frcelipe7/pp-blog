@@ -10,79 +10,22 @@
 {% block body %}
     <section class="block">
         <div class="text-content">
-            <div class="text-title">Título do texto</div>
+            <div class="text-title">{{devocional.theme}}</div>
             <div class="verse-and-reference">
                 <div class="verse">
                     <p>
-                        Porque Deus amou o mundo de tal maneira
-                        que deu o seu Filho unigênito, para que
-                        todo aquele que nele crê não pereça, mas 
-                        tenha a vida eterna.
+                        {{devocional.verse}}
                     </p>
                 </div>
                 <div class="reference">
-                    João 3:16
+                    {{devocional.reference}}
                 </div>
             </div>
             <div class="text">
-                <p>
-                    Lorem Ipsum é simplesmente uma simulação de
-                    texto da indústria tipográfica e de impressos,
-                    e vem sendo utilizado desde o século XVI,
-                    quando um impressor desconhecido pegou uma
-                    bandeja de tipos e os embaralhou para fazer
-                    um livro de modelos de tipos. Lorem Ipsum
-                    sobreviveu não só a cinco séculos, como também
-                    ao salto para a editoração eletrônica, permanecendo
-                    essencialmente inalterado. Se popularizou na
-                    década de 60, quando a Letraset lançou decalques
-                    contendo passagens de Lorem Ipsum, e mais
-                    recentemente quando passou a ser integrado a
-                    softwares de editoração eletrônica como Aldus 
-                    PageMaker. <br>
-                    Lorem Ipsum é simplesmente uma simulação de
-                    texto da indústria tipográfica e de impressos,
-                    e vem sendo utilizado desde o século XVI,
-                    quando um impressor desconhecido pegou uma
-                    bandeja de tipos e os embaralhou para fazer
-                    um livro de modelos de tipos. Lorem Ipsum
-                    sobreviveu não só a cinco séculos, como também
-                    ao salto para a editoração eletrônica, permanecendo
-                    essencialmente inalterado. Se popularizou na
-                    década de 60, quando a Letraset lançou decalques
-                    contendo passagens de Lorem Ipsum, e mais
-                    recentemente quando passou a ser integrado a
-                    softwares de editoração eletrônica como Aldus 
-                    PageMaker. <br>
-                    Lorem Ipsum é simplesmente uma simulação de
-                    texto da indústria tipográfica e de impressos,
-                    e vem sendo utilizado desde o século XVI,
-                    quando um impressor desconhecido pegou uma
-                    bandeja de tipos e os embaralhou para fazer
-                    um livro de modelos de tipos. Lorem Ipsum
-                    sobreviveu não só a cinco séculos, como também
-                    ao salto para a editoração eletrônica, permanecendo
-                    essencialmente inalterado. Se popularizou na
-                    década de 60, quando a Letraset lançou decalques
-                    contendo passagens de Lorem Ipsum, e mais
-                    recentemente quando passou a ser integrado a
-                    softwares de editoração eletrônica como Aldus 
-                    PageMaker. <br>
-                    Lorem Ipsum é simplesmente uma simulação de
-                    texto da indústria tipográfica e de impressos,
-                    e vem sendo utilizado desde o século XVI,
-                    quando um impressor desconhecido pegou uma
-                    bandeja de tipos e os embaralhou para fazer
-                    um livro de modelos de tipos. Lorem Ipsum
-                    sobreviveu não só a cinco séculos, como também
-                    ao salto para a editoração eletrônica, permanecendo
-                    essencialmente inalterado. Se popularizou na
-                    década de 60, quando a Letraset lançou decalques
-                    contendo passagens de Lorem Ipsum, e mais
-                    recentemente quando passou a ser integrado a
-                    softwares de editoração eletrônica como Aldus 
-                    PageMaker. <br>
-                </p>
+                {{ text|safe|escape }}
+                <br><br><br><br>
+                {{ text }}
+
             </div>
 
             <div class="info-buttons">
@@ -109,10 +52,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- <div class="content-sidebar">
-            <div class="sidebar-right"></div>
-        </div> -->
     </section>
 
 {% endblock %}
