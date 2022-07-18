@@ -6,6 +6,7 @@ class createDevocional(models.Model):
     verse = models.TextField(default='Jesus chorou.')
     reference = models.CharField(max_length=50, default='João 11:35')
     text = models.TextField(default='Jesus nos ama')
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.id}"

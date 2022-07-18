@@ -48,7 +48,7 @@ section.devocionais .devocional-block {
     border-radius: 5px;
     border: 1px solid var(--principal);
     /* margin: 5px; */
-    background: url("../images/c.jpg") no-repeat;
+    /* background: url("../images/default.jpg") no-repeat; */
     object-fit: cover;
     background-position: center -30px;
     background-size: 400px;

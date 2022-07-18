@@ -1,6 +1,8 @@
 {% extends 'app_blog/layout.html' %}
 {% load static %}
 
+{% block tilte %}{{devocional.theme}}{% endblock %}
+
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/read.css' %}">
     <script src="{% static 'js/read.js' %}"></script>
@@ -23,13 +25,10 @@
             </div>
             <div class="text">
                 {{ text|safe|escape }}
-                <br><br><br><br>
-                {{ text }}
-
             </div>
 
             <div class="info-buttons">
-                <p>Publicado em: 10 de março de 2004</p>
+                <p>Publicado em: {{date}}</p>
                 <div class="buttons">
                     <div class="save button" data-saved="false"></div>
 
