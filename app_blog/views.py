@@ -48,7 +48,8 @@ def adicionar(request):
 
         if theme == "" or verse == "" or reference == "" or text == "":
             return render(request, 'app_blog/adicionar.html', {
-                'error_message': 'Nenhuma informação deve ser deixada em branco!'
+                'error_message': 'Nenhuma informação deve ser deixada em branco!',
+                'text': text
             })
         try:
             createDevocional(

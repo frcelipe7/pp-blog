@@ -126,6 +126,10 @@ section.devocionais .devocional-block a button svg {
 }
 
 @media (max-width: 620px) {
+    section.devocionais .devocional-block {
+        object-fit: cover;
+        background-size: 100%;
+    }
     section.devocionais .content {
         grid-template-columns: 1fr;
     }
@@ -134,5 +138,11 @@ section.devocionais .devocional-block a button svg {
     }
     section.devocionais .devocional-block a button p {
         font-size: 11pt;
+    }
+}
+
+@media (max-width: 400px) {
+    section.devocionais .devocional-block {
+        background-size: 330px;
     }
 }

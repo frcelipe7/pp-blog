@@ -50,41 +50,91 @@ section.content-form form h1 {
     }
 }
 
-#aviso-width,
+#aviso,
 #error-content,
 #sucsess-content {
-    width: 400px; height: 60px;
-    position: fixed; z-index: 99999999;
+    width: 90%; height: 60px;
     border-radius: 10px;
-    background-color: rgb(0, 215, 0);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    color: #fff;
+}
+
+#error-content,
+#sucsess-content {
+    max-width: 600px;
+}
+
+#aviso {
+    background-color: rgba(255, 255, 0, 0.826);
+    color: black;
 }
 
 #error-content {
-    background-color: rgb(255, 27, 27);
+    background-color: rgb(255, 27, 27, 0.826);
 }
 
+#sucsess-content {
+    background-color: rgba(0, 215, 0, 0.826);
+}
+
+#error,
+#sucsess,
 #aviso-width {
-    background-color: rgb(234, 234, 0);
-    display: none;
     width: 100%; height: 60px;
-    margin: auto;
+    display: none;
+    position: fixed;
+    top: 70px; left: 0;
+    z-index: 101;
 }
 
-@media (max-width: 620px) {
+#error,
+#sucsess {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: .3s slide-from-top forwards;
+}
+
+
+@media (max-width: 940px) {
     #aviso-width {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        animation: .3s slide-from-top forwards;
     }
 }
 
-#aviso-width button,
-#error-content button,
-#sucsess-content button {
+#sucsess[reverse] {
+    animation: .3s slide-to-top forwards;
+}
+
+#error[reverse] {
+    animation: .3s slide-to-top forwards;
+}
+
+#aviso-width[reverse] {
+    animation: .3s slide-to-top forwards;
+}
+
+@keyframes slide-from-top {
+    0%{top: -50px;}
+    100%{top: 70px;}
+}
+
+@keyframes slide-to-top {
+    0%{top: 70px;}
+    100%{top: -50px;}
+}
+
+#aviso-width .close,
+#error-content .close,
+#sucsess-content .close {
     width: 40px; height: 40px;
     display: flex;
     align-items: center;
@@ -102,11 +152,33 @@ section.content-form form h1 {
     fill: #fff;
 }
 
-
 .content-form form .line {
     display: flex;
     position: relative;
     margin-bottom: 25px;
+}
+
+@media (max-width: 520px) {
+    #sucsess-content,
+    #error-content,
+    #aviso {
+        width: 95%;
+    }
+    #sucsess,
+    #error,
+    #aviso-width {
+        font-size: 11pt;
+    }
+    #sucsess-content .close,
+    #error-content .close,
+    #aviso-width .close {
+        width: 30px; height: 30px;
+    }
+    #sucsess-content svg,
+    #error-content svg,
+    #aviso-width svg {
+        width: 25px; height: 25px;
+    }
 }
 
 /* label */
