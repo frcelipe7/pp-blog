@@ -159,6 +159,16 @@ aside ul li:hover {
     background-color: var(--quinta-hover);
 }
 
+@media (max-width: 620px) {
+    .topo-fixed {
+        padding: 0 30px;
+    }
+    .topo-fixed .logo {
+        margin-left: 50px;
+    }
+    .topo-fixed .content-buttons .button {display: none;}
+    .topo-fixed .content-buttons .register-login-user {display: block;}
+}
 
 
 

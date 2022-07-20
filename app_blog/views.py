@@ -46,13 +46,22 @@ def adicionar(request):
         reference = request.POST['reference']
         text = request.POST['text']
 
-        createDevocional(
-            theme=theme,
-            verse=verse,
-            reference=reference,
-            text=text
-        ).save()
-        return render(request, 'app_blog/adicionar.html', {
-            'message': 'Devocional adicionado com sucesso!'
-        })
+        if theme == "" or verse == "" or reference == "" or text == "":
+            return render(request, 'app_blog/adicionar.html', {
+                'error_message': 'Nenhuma informação deve ser deixada em branco!'
+            })
+        try:
+            createDevocional(
+                theme=theme,
+                verse=verse,
+                reference=reference,
+                text=text
+            ).save()
+            return render(request, 'app_blog/adicionar.html', {
+                'message': 'Devocional adicionado com sucesso!'
+            })
+        except:
+            return render(request, 'app_blog/adicionar.html', {
+                'error_message': 'Ocorreu algum erro!'
+            })
     return render(request, 'app_blog/adicionar.html')

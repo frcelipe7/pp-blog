@@ -8,6 +8,19 @@ section.content-form {
     justify-content: space-between;
 }
 
+@media (max-width: 1100px) {
+    section.content-form {
+        margin-top: 20px;
+        padding: 50px;
+    }
+}
+
+@media (max-width: 1100px) {
+    section.content-form {
+        padding: 30px;
+    }
+}
+
 section.content-form form {
     width: 65%;
     background-color: var(--sexta);
@@ -18,6 +31,12 @@ section.content-form form {
     margin-bottom: 100px;
 }
 
+@media (max-width: 940px) {
+    section.content-form form {
+        width: 100%;
+    }
+}
+
 section.content-form form h1 {
     margin-bottom: 40px;
     font-size: 30pt; text-align: center;
@@ -25,6 +44,14 @@ section.content-form form h1 {
     font-family: 'Bebas Neue', cursive;
 }
 
+@media (max-width: 620px) {
+    section.content-form form h1 {
+        font-size: 25pt;
+    }
+}
+
+#aviso-width,
+#error-content,
 #sucsess-content {
     width: 400px; height: 60px;
     position: fixed; z-index: 99999999;
@@ -36,6 +63,27 @@ section.content-form form h1 {
     padding: 15px;
 }
 
+#error-content {
+    background-color: rgb(255, 27, 27);
+}
+
+#aviso-width {
+    background-color: rgb(234, 234, 0);
+    display: none;
+    width: 100%; height: 60px;
+    margin: auto;
+}
+
+@media (max-width: 620px) {
+    #aviso-width {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+#aviso-width button,
+#error-content button,
 #sucsess-content button {
     width: 40px; height: 40px;
     display: flex;
@@ -47,6 +95,8 @@ section.content-form form h1 {
     background-color: transparent;
 }
 
+#aviso-width svg,
+#error-content svg,
 #sucsess-content svg {
     width: 30px; height: 30px;
     fill: #fff;
@@ -161,6 +211,12 @@ section.content-form form h1 {
 .content-sidebar {
     width: auto; 
     position: relative;
+}
+
+@media (max-width: 940px) {
+    .content-sidebar {
+        display: none;
+    }
 }
 
 .sidebar-right {

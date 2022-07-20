@@ -16,6 +16,12 @@
     }
 }
 
+@media (max-width: 620px) {
+    .block {
+        padding: 30px 20px;
+    }
+}
+
 /*  TEXT-CONTENT  */
 
 .text-content {
@@ -44,7 +50,7 @@
     margin-bottom: 50px;
 }
 
-.text-content .verse-and-reference .verse p{
+.text-content .verse-and-reference .verse p {
     font-style: italic;
     font-weight: 300;
     text-align: center;
@@ -52,27 +58,27 @@
     position: relative;
 }
 
-/* .text-content .verse-and-reference .verse p::before {
-    content: "\201C";
-    font-size: 30pt;
-    font-weight: bold;
-    position: absolute;
-    left: -30px;
-    top: -20px;
-}
-
-.text-content .verse-and-reference .verse p::after {
-    content: "\201C";
-    font-size: 30pt;
-    font-weight: bold;
-    position: absolute;
-    right: -30px;
-    bottom: -30px;
-} */
-
 .text-content .verse-and-reference .reference {
     text-align: center;
     font-size: 19px;
+}
+
+@media (max-width: 620px) {
+    .text-content {
+        padding-top: 50px;
+    }
+    .text-content .text-title {
+        font-size: 21pt;
+    }
+    .text-content .verse-and-reference {
+        width: 90%;
+    }
+    .text-content .verse-and-reference .verse p {
+        font-size: 11pt;
+    }
+    .text-content .verse-and-reference .reference {
+        font-size: 11pt;
+    }
 }
 
 .text-content .text {
@@ -108,6 +114,29 @@
 {
     font-weight: bold;
     font-style: italic;
+}
+
+@media (max-width: 770px) {
+    .text-content .text {
+        margin: 0 50px;
+    }
+}
+
+@media (max-width: 620px) {
+    .text-content .text {
+        margin: 0 25px;
+        font-size: 11pt;
+    }
+
+    .text-content .text h1 {
+        font-size: 13pt;
+    }
+    .text-content .text h2 {
+        font-size: 12pt;
+    }
+    .text-content .text em {
+        font-size: 11pt;
+    }
 }
 
 
@@ -151,6 +180,29 @@
     margin-left: 15px;
 }
 
+
+@media (max-width: 620px) {
+    .text-content .info-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .text-content .info-buttons .timestamp {
+        font-size: 11pt;
+        margin: 10px 0;
+        margin-bottom: 5px;
+    }
+    .text-content .info-buttons .buttons {
+        width: auto;
+        font-size: 11pt;
+    }
+    .text-content .info-buttons .buttons .button {
+        padding: 0 10px;
+    }
+    .text-content .info-buttons .buttons .button.share {
+        margin-left: 5px;
+    }
+}
+
 .text-content .info-buttons .buttons .button:hover {
     background-color: var(--sexta);
     border: 1px solid var(--quinta);
@@ -165,4 +217,8 @@
 .text-content .info-buttons .button svg {
     width: 20px; height: 20px;
     margin-left: 5px;
+}
+
+.text-content .info-buttons .save svg {
+    width: 17px; height: 17px;
 }
