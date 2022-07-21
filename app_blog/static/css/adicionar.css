@@ -28,6 +28,7 @@ section.content-form form {
     border: 1px solid var(--quinta);
     border-top: 20px solid var(--quinta);
     box-shadow: 0 5px 1em var(--escura);
+    border-radius: 5px 5px 0 0;
     margin-bottom: 100px;
 }
 
@@ -312,7 +313,7 @@ section.content-form form h1 {
 }
 
 .sidebar-right .line {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .sidebar-right p {
@@ -337,3 +338,26 @@ section.content-form form h1 {
     background-color: rgb(246, 246, 246);
     transform: scale(0.99); 
 }
+
+
+section.preview-content {
+    width: 100%; height: auto;
+    padding: 0px 100px;
+    display: none;
+}
+.preview {
+    height: auto; width: 100%;
+    background-color: var(--sexta);
+    border-radius: 5px 5px 0 0;
+    padding: 70px;
+    margin-bottom: 20px;
+    border: 1px solid var(--principal);
+    border-top: 20px solid var(--principal);
+    box-shadow: 0 5px 1em var(--escura);
+    text-align: justify;
+}
+
+.preview.text blockquote {
+    border-left: 5px solid var(--principal);
+}
+

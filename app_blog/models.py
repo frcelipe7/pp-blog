@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class createDevocional(models.Model):
     theme = models.CharField(max_length=30, default='Tema')
     # image = models.ImageField()

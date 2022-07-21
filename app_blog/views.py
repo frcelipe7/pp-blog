@@ -1,5 +1,8 @@
+from django.http import HttpResponse, HttpResponseRedirect, request
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import request
+from django.urls import reverse
 from .models import *
 
 from markdown2 import Markdown
@@ -13,6 +16,26 @@ def index(request):
         'devocionais': devocionais
     })
 
+
+def login_register_view(request):
+    if request.method == 'POST':
+        login_or_register = request.POST['method']
+        if login_or_register == 'login':
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect(reverse("index"))
+            else:
+                return render(request, "app_blog/login.html", {
+                    "message_user": "Login e/ou senha inválidos."
+                })
+        elif login_or_register == 'register':
+            pass
+    else:
+        return render(request, "app_blog/login.html")
+    
 
 def devocional(request, id):
     devocional = createDevocional.objects.get(id=id)
@@ -37,8 +60,13 @@ def devocional(request, id):
         'date': date
     })
 
-
+# @login_required
 def adicionar(request):
+    print(request.user)
+    if request.user.is_anonymous:
+        return HttpResponseRedirect(reverse("index"))
+    if request.user.is_superuser == False:
+        return HttpResponseRedirect(reverse("index"))
     if request.method == "POST":
         theme = request.POST['theme']
         # image = request.FILE['image']

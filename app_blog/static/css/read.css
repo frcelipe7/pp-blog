@@ -10,15 +10,21 @@
     justify-content: space-between;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 1000px) {
     .block {
         padding: 30px 60px;
     }
 }
 
+@media (max-width: 770px) {
+    .block {
+        padding: 30px 40px;
+    }
+}
+
 @media (max-width: 620px) {
     .block {
-        padding: 30px 20px;
+        padding: 30px 00px;
     }
 }
 
@@ -27,15 +33,25 @@
 .text-content {
     height: auto; width: 100%;
     background-color: var(--sexta);
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
     padding: 70px 0;
     margin-bottom: 100px;
-    float: right;
     position: relative;
     border: 1px solid var(--quinta);
     border-top: 20px solid var(--quinta);
     box-shadow: 0 5px 1em var(--escura);
 }
+
+@media (max-width: 620px) {
+    .text-content {
+        border-radius: 0px;
+        border: none;
+        padding: 70px 20px;
+        border-top: 20px solid var(--quinta);
+        box-shadow: 0 5px 1em var(--escura);
+    }
+}
+
 
 .text-content .text-title {
     font-size: 30pt; text-align: center;
@@ -86,55 +102,66 @@
     margin: 0 70px;
 }
 
-.text-content .text h1
+.text blockquote {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 30px;
+    margin-right: 0px;
+    border-left: 5px solid var(--quinta);
+    padding-left: 15px;
+    color: rgb(53, 53, 53);
+}
+
+.text h1
 {
     font-size: 18pt;
     font-weight: 600;
 }
 
-.text-content .text h2
+.text h2
 {
     font-size: 16pt;
     font-weight: 600;
 }
 
-.text-content .text strong 
+.text strong 
 {
     font-weight: bold;
 }
 
-.text-content .text em
+.text em
 {
     font-style: italic;
     font-weight: 500;
     font-size: 12pt;
 }
 
-.text-content .text strong em
+.text strong em
 {
     font-weight: bold;
     font-style: italic;
 }
 
 @media (max-width: 770px) {
-    .text-content .text {
+    .text {
         margin: 0 50px;
     }
 }
 
 @media (max-width: 620px) {
-    .text-content .text {
+    .text {
         margin: 0 25px;
         font-size: 11pt;
     }
 
-    .text-content .text h1 {
+    .text h1 {
         font-size: 13pt;
     }
-    .text-content .text h2 {
+    .text h2 {
         font-size: 12pt;
     }
-    .text-content .text em {
+    .text em {
         font-size: 11pt;
     }
 }
@@ -218,7 +245,7 @@
     width: 20px; height: 20px;
     margin-left: 5px;
 }
-
+/* 
 .text-content .info-buttons .save svg {
     width: 17px; height: 17px;
-}
+} */

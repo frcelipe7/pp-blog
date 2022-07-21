@@ -140,26 +140,75 @@ aside ul li:hover {
     z-index: 9999;
 }
 
+@media (max-width: 800px) {
+    .topo-fixed {
+        padding: 0 80px;
+        
+    }
+}
+
+.topo-fixed .content-buttons {display: flex;}
+
 .topo-fixed .logo,
-.topo-fixed .content-buttons .button{
+.topo-fixed .content-buttons .button {
     background-color: var(--sexta);
     width: 80px; height: 30px;
     border-radius: 5px;
     margin-left: 25px;
 }
 
-.topo-fixed .content-buttons {display: flex;}
-
-.topo-fixed .content-buttons .register-login-user {
-    width: 130px;
+.topo-fixed .content-buttons .search {
+    width: auto;
     background-color: var(--quinta);
     border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topo-fixed .content-buttons .search input {
+    background-color: #f8f8f8;
+    border-radius: 50px 0 0 50px;
+    border: none;
+    width: 90px;
+    height: 30px;
+    transition: .3s;
+    outline: none;
+    padding: 0 10px;
+}
+
+.topo-fixed .content-buttons .search input:not(:placeholder-shown),
+.topo-fixed .content-buttons .search input:focus {
+    width: 250px;
+}
+
+.topo-fixed .content-buttons .search button {
+    width: 40px; height: 30px;
+    border-radius: 0 50px 50px 0;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    background-color: var(--quinta);
+    transition: .3s;
+    cursor: pointer;
+}
+
+.topo-fixed .content-buttons .search button:hover {
+    background-color: var(--quinta-hover);
+}
+
+.topo-fixed .content-buttons .search button svg {
+    width: 20px; height: 20px;
+    fill: #fff;
     transition: .3s;
 }
 
-.topo-fixed .content-buttons .register-login-user:hover {
-    background-color: var(--quinta-hover);
-}
+.topo-fixed .content-buttons .search button:hover > svg {
+    fill: #e1e1e1;
+} 
 
 @media (max-width: 620px) {
     .topo-fixed {
@@ -169,7 +218,7 @@ aside ul li:hover {
         margin-left: 50px;
     }
     .topo-fixed .content-buttons .button {display: none;}
-    .topo-fixed .content-buttons .register-login-user {display: block;}
+    .topo-fixed .content-buttons .search {display: flex;}
 }
 
 

@@ -5,7 +5,9 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/adicionar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/read.css' %}">
     <script src="{% static 'js/adicionar.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
 {% endblock %}
 
 
@@ -110,10 +112,18 @@
                     <p class="italico">Italico: <pre id="italico"></pre></p>
                 </div>
                 <div class="line">
+                    <p class="citacao">Citação: <pre id="citacao"></pre></p>
+                </div>
+                <div class="line">
                     <p class="link">Inserir um link: <pre id="link"></pre></p>
                 </div>
-                <button>Preview</button>
+                <button id="preview-button">Preview</button>
             </div>
+        </div>
+    </section>
+    <section class="preview-content">
+        <div class="preview text">
+            <h1>Preview</h1>
         </div>
     </section>
     <script>
@@ -129,8 +139,21 @@
         const italico = document.getElementById("italico");
         italico.innerText = '*texto*';
 
+        const citacao = document.getElementById("citacao");
+        citacao.innerText = '> texto';
+
         const link = document.getElementById("link");
-        link.innerText = '[Texto aqui](https://Link-aqui)'
+        link.innerText = '[Texto aqui](https://Link-aqui)';
+
+        const preview_button = document.getElementById("preview-button");
+        const preview_content = document.querySelector(".preview-content .preview");
+        preview_button.addEventListener("click", () => {
+            document.querySelector(".preview-content").style.display = 'block';
+            var converter = new showdown.Converter();
+            var text = document.getElementById("text").value;
+            var html = converter.makeHtml(text);
+            preview_content.innerHTML = html;
+        })
         
     </script>
 {% endblock %}

@@ -31,7 +31,6 @@ ALLOWED_HOSTS = [
     "6cec-2804-3e04-418-8b01-349f-4335-76ab-719.sa.ngrok.io"
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
