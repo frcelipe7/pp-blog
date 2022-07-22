@@ -19,7 +19,7 @@ def index(request):
     })
 
 
-def login_register_view(request):
+def login_view(request):
     if request.method == 'POST':
         login_or_register = request.POST['method']
         if login_or_register == 'login':
@@ -101,6 +101,8 @@ def adicionar(request):
 def search(request):
     keyword_search = request.GET.get("keyword_search", "")
 
+    not_found = False
+
     all_devocionais = createDevocional.objects.all()
 
     return_devocionais = []
@@ -113,9 +115,13 @@ def search(request):
         elif keyword_search.lower() in devocional.text.lower():
             return_devocionais.append(devocional)
     
+    if return_devocionais.__len__() == 0:
+        not_found = f'Não foram encontrados resultados para a pesquisa "{keyword_search}". Tente utilizar uma outra palavra-chave.'
+    
     return render(request, 'app_blog/search.html', {
         'response': return_devocionais,
-        "keyword_search": keyword_search
+        "keyword_search": keyword_search,
+        'not_found': not_found
     })
 
 

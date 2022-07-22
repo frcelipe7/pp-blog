@@ -20,16 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const search_button = document.querySelector(".content-buttons .search button");
     const search_input = document.querySelector(".content-buttons .search input");
     
-    function search() {
-        if (search_input.value != "") {
-            const site_domain = "http://127.0.0.1:8000";
-            window.location.href = `${site_domain}/search?keyword_search=${search_input.value}`;
-        };
+    function search(search) {
+        const site_domain = "http://127.0.0.1:8000";
+        window.location.href = `${site_domain}/search?keyword_search=${search}`;
     };
     
-    function enterKeyPressed(event) {
+    function enterKeyPressed(event, value) {
         if (event.keyCode == 13) {
-            search();
+            search(value);
             return true;
         } else {
             return false;
@@ -37,10 +35,27 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     
     search_button.addEventListener('click', () => {
-        search();
+        if (search_input.value == "") return false;
+
+        search(search_input.value);
     });
 
     search_input.addEventListener("keypress", () => {
-        enterKeyPressed(event);
+        if (search_input.value == "") return false;
+
+        enterKeyPressed(event, search_input.value);
     });
+
+    try {
+        const second_search_input = document.querySelector(".search_form #second_search");
+        const second_search_button = document.querySelector(".search_form button");
+
+        second_search_button.addEventListener("click", () => {
+            search(second_search_input.value);
+        });
+
+        second_search_input.addEventListener("keypress", () => {
+            enterKeyPressed(event, second_search_input.value);
+        });
+    } catch (e) {};
 });
