@@ -1,3 +1,5 @@
+from ast import keyword
+from venv import create
 from django.http import HttpResponse, HttpResponseRedirect, request
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -94,3 +96,28 @@ def adicionar(request):
                 'error_message': 'Ocorreu algum erro!'
             })
     return render(request, 'app_blog/adicionar.html')
+
+
+def search(request):
+    keyword_search = request.GET.get("keyword_search", "")
+
+    all_devocionais = createDevocional.objects.all()
+
+    return_devocionais = []
+
+    for devocional in all_devocionais:
+        if keyword_search.lower() in devocional.theme.lower():
+            return_devocionais.append(devocional)
+        elif keyword_search.lower() in devocional.reference.lower():
+            return_devocionais.append(devocional)
+        elif keyword_search.lower() in devocional.text.lower():
+            return_devocionais.append(devocional)
+    
+    return render(request, 'app_blog/search.html', {
+        'response': return_devocionais,
+        "keyword_search": keyword_search
+    })
+
+
+def devocionais(request):
+    pass

@@ -46,10 +46,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const preview_button = document.getElementById("preview-button");
     const preview_content = document.querySelector(".preview-content .preview");
     preview_button.addEventListener("click", () => {
-        document.querySelector(".preview-content").style.display = 'block';
         var converter = new showdown.Converter();
         var text = document.getElementById("text").value;
-        var html = converter.makeHtml(text);
-        preview_content.innerHTML = html;
+        if (text != "") {
+            document.querySelector(".preview-content").style.display = 'block';
+            var html = converter.makeHtml(text);
+            preview_content.innerHTML = html;
+        };
     });
+
+    function verify_content() {
+        if (document.getElementById("text").value != '') {
+            preview_button.disabled = false
+        } else {
+            preview_button.disabled = true;
+        }
+    }
+
+    verify_content();
+
+    document.getElementById("text").addEventListener("keyup", () => {
+        verify_content();
+    })
 });
