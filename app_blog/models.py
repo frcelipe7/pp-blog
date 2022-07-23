@@ -13,6 +13,12 @@ class createDevocional(models.Model):
         return f"{self.id}"
 
 
+class newsLetter(models.Model):
+    email = models.EmailField()
+    username = models.CharField(default="Usuário", max_length=200)
+
+
 all_classes = [
-    createDevocional
+    createDevocional,
+    newsLetter,
 ]

@@ -15,6 +15,7 @@
     <section class="form_section">
         <h1>Newsletter</h1>
         <form action="{% url 'newsletter' %}" method="post">
+            {% csrf_token %}
             <div class="line">
                 <input type="text" name="name" id="name" placeholder=" ">
                 <label for="name">Nome</label>
