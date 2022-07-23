@@ -1,0 +1,32 @@
+{% extends 'app_blog/layout.html' %}
+{% load static %}
+
+{% block tilte %}
+    Newsletter
+{% endblock %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/newsletter.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <section class="form_section">
+        <h1>Newsletter</h1>
+        <form action="{% url 'newsletter' %}" method="post">
+            <div class="line">
+                <input type="text" name="name" id="name" placeholder=" ">
+                <label for="name">Nome</label>
+            </div>
+            <div class="line">
+                <input type="email" name="email" id="email" placeholder=" ">
+                <label for="email">Email</label>
+            </div>
+            <button>Enviar</button>
+        </form>
+    </section>
+    <section class="text_section">
+        
+    </section>
+{% endblock %}

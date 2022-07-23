@@ -64,7 +64,6 @@ def devocional(request, id):
 
 # @login_required
 def adicionar(request):
-    print(request.user)
     if request.user.is_anonymous:
         return HttpResponseRedirect(reverse("index"))
     if request.user.is_superuser == False:
@@ -88,6 +87,11 @@ def adicionar(request):
                 reference=reference,
                 text=text
             ).save()
+            
+            # Aqui eu tenho que adicionar o negócio pra
+            # enviar email pro pessoal que ta inscrito
+            # na Newsletter
+
             return render(request, 'app_blog/adicionar.html', {
                 'message': 'Devocional adicionado com sucesso!'
             })
@@ -127,3 +131,9 @@ def search(request):
 
 def devocionais(request):
     pass
+
+
+def newsletter(request):
+    if request.method == "POST":
+        pass
+    return render(request, 'app_blog/newsletter.html')

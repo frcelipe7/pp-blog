@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&display=swap');
+
+h1 {
+    font-size: 35pt; text-align: center;
+    font-weight: 700;
+    font-family: 'Cormorant SC', serif;
+    margin: 50px auto;
+}
+
+form {
+    width: 500px;
+    background-color: var(--sexta);
+    padding: 20px;
+    padding-top: 30px;
+    border: 1px solid var(--quinta);
+    border-top: 20px solid var(--quinta);
+    box-shadow: 0 5px 1em var(--escura);
+    border-radius: 5px 5px 0 0;
+    margin: auto;
+    margin-bottom: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+form .line {
+    display: flex;
+    position: relative;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+form .line label {
+    position: absolute;
+    left: 10px;
+    top: 3px;
+    transition: .2s;
+}
+
+form .line label,
+form .line input {
+    cursor: text;
+}
+
+form .line input {
+    height: 30px;
+    padding: 0 10px;
+    width: 100%;
+    outline: none;
+    transition: .2s;
+    border-radius: 5px;
+    border: 1px solid var(--quinta);
+}
+
+form input:not(:placeholder-shown),
+form input:focus {
+    border-color: var(--quinta);
+    color: var(--quinta);
+}
+
+form input:not(:placeholder-shown) ~ label,
+form input:focus ~ label {
+    top: -17px;
+    font-size: 10pt;
+    left: 8px;
+    /* color: var(--quinta); */
+}
+
+form button {
+    width: 50%; height: 30px;
+    background-color: var(--quinta);
+    color: #fff;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+form button:hover {
+    transform: scale(0.99);
+    background-color: var(--quinta-hover);
+}
