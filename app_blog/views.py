@@ -14,64 +14,98 @@ import smtplib
 import email.message
 
 
-def send_email(devocional_theme, verse, referencia, devocional_id):
-    all_users = newsLetter.objects.all()
-    try:
-        for user in all_users:
-            username = f"{user.username.title()}"
-            corpo_email = f"""
-                <!DOCTYPE html>
-                <html lang="pt-br">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                </head>
-                <body>
-                    <p>
-                        Olá <b>{username}.</b> Nós acabamos de publicar
-                        mais um estudo bíblico para a sua edificação espiritual. Da só
-                        uma olhada:
-                    </p> <br>
-                    <section class="block" style="height: 100%;width: 100%;padding-top: 50px;display: flex; align-items: center;">
-                        <div class="text-content" style="height: auto;width: 60%;background-color: #f8f8f8;border-radius: 5px 5px 0 0;padding: 70px 0;margin-bottom: 100px;border: 1px solid #C08D2C;border-top: 20px solid #C08D2C;box-shadow: 0 5px 1em #CBCBCB;">
-                            <div class="text-title" style="width: 100%; font-size: 20pt; text-align: center; font-weight: 600;">{devocional_theme.upper()}</div>
-                            <div class="verse-and-reference" style="width: 90%;height: auto;margin: auto;margin-top: 30px;margin-bottom: 50px;">
-                                <div class="verse">
-                                    <p style="font-style: italic;font-weight: 300;text-align: center;font-size: 17px;position: relative;">
-                                        {verse}
-                                    </p>
-                                </div>
-                                <div class="reference" style="text-align: center;font-size: 19px;">
-                                    {referencia}
-                                </div>
-                            </div>
-                            <div style="width: 100%; text-align: center;">
-                                <a style="background-color: #C08D2C; padding:10px 15px; color: white; border-radius: 30px; margin: auto;" href="http://127.0.0.1:8000/devocional/id={devocional_id}">
-                                    Leia mais clicando aqui!
-                                </a>
-                            </div>
+def corpo_confirmation(username):
+    corpo_email = f"""
+        Olá {username.title()}, este é um email de confirmação. Agora você faz parte
+        do grupo de membros da nossa Newsletter 🥳🎉. Assim, quando for publicado
+        um novo estudo bíblico, você receberá uma notificação aqui neste email
+        com um link para você acessar o estudo. <br><br>
+
+        ;D
+        Pela Palavra
+    """
+    return corpo_email
+
+
+def corpo_newsletter(username, devocional_theme, verse, referencia, devocional_id):
+    corpo_email = f"""
+        <!DOCTYPE html>
+        <html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body>
+            <p>
+                Olá <b>{username.title()}.</b> Nós acabamos de publicar
+                mais um estudo bíblico para a sua edificação espiritual. Da só
+                uma olhada:
+            </p> <br>
+            <section class="block" style="height: 100%;width: 100%;padding-top: 50px;display: flex; align-items: center;">
+                <div class="text-content" style="height: auto;width: 60%;background-color: #f8f8f8;border-radius: 5px 5px 0 0;padding: 70px 0;margin-bottom: 100px;border: 1px solid #C08D2C;border-top: 20px solid #C08D2C;box-shadow: 0 5px 1em #CBCBCB;">
+                    <div class="text-title" style="width: 100%; font-size: 20pt; text-align: center; font-weight: 600;">{devocional_theme.upper()}</div>
+                    <div class="verse-and-reference" style="width: 90%;height: auto;margin: auto;margin-top: 30px;margin-bottom: 50px;">
+                        <div class="verse">
+                            <p style="font-style: italic;font-weight: 300;text-align: center;font-size: 17px;position: relative;">
+                                {verse}
+                            </p>
                         </div>
-                    </section>
-                </body>
-                </html>
-            """
+                        <div class="reference" style="text-align: center;font-size: 19px;">
+                            {referencia}
+                        </div>
+                    </div>
+                    <div style="width: 100%; text-align: center;">
+                        <a style="background-color: #C08D2C; padding:10px 15px; color: white; border-radius: 30px; margin: auto;" href="http://127.0.0.1:8000/devocional/id={devocional_id}">
+                            Leia mais clicando aqui!
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </body>
+        </html>
+    """
+    return corpo_email
 
-            msg = email.message.Message()
-            msg['Subject'] = "Teste"
-            msg['From'] = 'dev.testes.77@gmail.com'
-            msg['To'] = f"{user.email}"
-            password = 'lbksxwtnobkncfhi' 
-            msg.add_header('Content-Type', 'text/html')
-            msg.set_payload(corpo_email)
 
-            with smtplib.SMTP('smtp.gmail.com: 587') as s:
-                s.starttls()
-                s.login(msg['From'], password)
-                s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
-                print("Email enviado")
-    except:
-        pass
+def disparar_email(user, corpo_email):
+    msg = email.message.Message()
+    msg['Subject'] = "Teste"
+    msg['From'] = 'dev.testes.77@gmail.com'
+    msg['To'] = f"{user.email}"
+    password = 'lbksxwtnobkncfhi' 
+    msg.add_header('Content-Type', 'text/html')
+    msg.set_payload(corpo_email)
+
+    with smtplib.SMTP('smtp.gmail.com: 587') as s:
+        s.starttls()
+        s.login(msg['From'], password)
+        s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
+        print("Email enviado")
+
+
+def send_email(devocional_theme, verse, referencia, devocional_id, method, confirm_email, confirm_username):
+    if method == 'newsletter':
+        all_users = newsLetter.objects.all()
+        try:
+            for user in all_users:
+                username = f"{user.username.title()}"
+                corpo_email = corpo_newsletter(username, devocional_theme, verse, referencia, devocional_id)
+                disparar_email(user, corpo_email)
+                
+        except:
+            pass
+    elif method == 'confirmation':
+        corpo_email = corpo_confirmation(confirm_username)
+        user = newsLetter.objects.get(email=confirm_email)
+        disparar_email(user, corpo_email)
+
+
+
+
+
+
+
 
 
 def index(request):
@@ -156,8 +190,13 @@ def adicionar(request):
             # enviar email pro pessoal que ta inscrito
             # na Newsletter
             try:
-                
-                send_email(new_devocional.theme, new_devocional.verse, new_devocional.reference, new_devocional.id)
+                send_email(
+                    devocional_theme=new_devocional.theme,
+                    verse=new_devocional.verse,
+                    referencia=new_devocional.reference,
+                    devocional_id=new_devocional.id,
+                    method='newsletter'
+                )
             except:
                 return render(request, 'app_blog/adicionar.html', {
                     'error_message': 'Adicionado com erro no envio de email!'
@@ -210,6 +249,9 @@ def newsletter(request):
         username = request.POST['name']
 
         newsLetter(email=email, username=username.title()).save()
+        send_email(confirm_email=email, confirm_username=username, method='confirmation')
+
+        # tenho que enviar uma confirmação para o email da pessoa
 
         return HttpResponseRedirect(reverse('index'))
 
