@@ -1,6 +1,6 @@
 from ast import keyword
 from venv import create
-from django.http import HttpResponse, HttpResponseRedirect, request
+from django.http import request, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
@@ -12,14 +12,21 @@ import calendar
 import locale
 import smtplib
 import email.message
+import time
 
 
 def corpo_confirmation(username):
     corpo_email = f"""
         Olá {username.title()}, este é um email de confirmação. Agora você faz parte
-        do grupo de membros da nossa Newsletter 🥳🎉. Assim, quando for publicado
-        um novo estudo bíblico, você receberá uma notificação aqui neste email
-        com um link para você acessar o estudo. <br><br>
+        do grupo de membros da nossa Newsletter 🥳🎉. 
+        <div style="width:100%; display:flex; justify-content:center; align-items:center;">
+            <img style="width:300px;" 
+            src="http://catalogodc.online/static/img/site/logo_p.png" 
+            alt="Welcome">
+        </div>
+        
+        Assim que for publicado um novo estudo bíblico você receberá uma 
+        notificação o link para você acessar o estudo. <br><br>
 
         ;D
         Pela Palavra
@@ -195,7 +202,9 @@ def adicionar(request):
                     verse=new_devocional.verse,
                     referencia=new_devocional.reference,
                     devocional_id=new_devocional.id,
-                    method='newsletter'
+                    method='newsletter',
+                    confirm_email='nao',
+                    confirm_username='nao'
                 )
             except:
                 return render(request, 'app_blog/adicionar.html', {
@@ -248,11 +257,35 @@ def newsletter(request):
         email = request.POST['email']
         username = request.POST['name']
 
+        # all_users_signedin = newsLetter.objects.all()
+
+        # for user_signedin in all_users_signedin:
+        #     if user_signedin.email == email:
+        #         return render(request, 'app_blog/newsletter.html', {
+        #             'error_message': "Este email já está cadastrado na NewsLetter."
+        #         })
+
         newsLetter(email=email, username=username.title()).save()
-        send_email(confirm_email=email, confirm_username=username, method='confirmation')
 
-        # tenho que enviar uma confirmação para o email da pessoa
+        send_email(
+            devocional_theme='nao',
+            verse='nao',
+            referencia='nao',
+            devocional_id='nao',
+            method='confirmation',
+            confirm_email=email,
+            confirm_username=username
+        )
 
-        return HttpResponseRedirect(reverse('index'))
+        time.sleep(5000)
 
+        return HttpResponseRedirect(reverse("index"))
     return render(request, 'app_blog/newsletter.html')
+
+
+def email_registered(request):
+    all_users_signedin = newsLetter.objects.all()
+    emails_list = []
+    for user in all_users_signedin:
+        emails_list.append(user.email)
+    return JsonResponse([email for email in emails_list], safe=False)

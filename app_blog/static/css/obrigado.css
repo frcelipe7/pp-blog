@@ -1,0 +1,35 @@
+section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    height: 100vh;
+    padding-top: 30px;
+}
+
+.message {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 85vh;
+}
+
+h1 {
+    font-size: 500;
+    font-size: 25pt;
+    text-align: center;
+}
+h1 span {font-weight: bold;}
+section p {text-align: center;}
+p span {font-weight: 500;}
+
+.animation {
+    top: 100px;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    z-index: 1;
+}

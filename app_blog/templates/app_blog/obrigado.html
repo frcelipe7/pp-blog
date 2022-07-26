@@ -2,46 +2,19 @@
 {% load static %}
 
 {% block tilte %}
-    Newsletter
+    Cadastrado com sucesso!
 {% endblock %}
 
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/newsletter.css' %}">
+    <link rel="stylesheet" href="{% static 'css/obrigado.css' %}">
+    <style>svg#freepik_stories-festivities:not(.animated) .animable {opacity: 0;}svg#freepik_stories-festivities.animated #freepik--background-simple--inject-14 {animation: 3s Infinite  linear wind;animation-delay: 0s;}svg#freepik_stories-festivities.animated #freepik--Confetti--inject-14 {animation: 0.7s 1 forwards ease-in slideDown,3s Infinite  linear floating;animation-delay: 0s,1.2s;}            @keyframes wind {                0% {                    transform: rotate( 0deg );                }                25% {                    transform: rotate( 1deg );                }                75% {                    transform: rotate( -1deg );                }            }                    @keyframes slideDown {                0% {                    opacity: 0;                    transform: translateY(-30px);                }                100% {                    opacity: 1;                    transform: translateY(0);                }            }                    @keyframes floating {                0% {                    opacity: 1;                    transform: translateY(0px);                }                50% {                    transform: translateY(-10px);                }                100% {                    opacity: 1;                    transform: translateY(0px);                }            }        </style>
+
 {% endblock %}
 
 
 {% block body %}
-    <section class="form_section">
-        <h1>Newsletter</h1>
-        <form action="{% url 'newsletter' %}" method="post">
-            {% csrf_token %}
-            <div class="line">
-                <input type="text" name="name" id="name" placeholder=" ">
-                <label for="name">Nome</label>
-            </div>
-            <div class="line">
-                <input type="email" name="email" id="email" placeholder=" ">
-                <label for="email">Email</label>
-            </div>
-            <button>Enviar</button>
-        </form>
-    </section>
-    <section class="text_section">
-        <h2>O que é uma Newsletter?</h2>
-        <p>
-            Uma Newsletter é uma forma de cominicação onde você ficará atualizado
-            sobre as postagens que são feitas aqui no site. Cada vês que adicionarmos
-            um novo estudo bíblico você receberá uma notificação no email cadastrado
-            com um link para o estudo. Essa é uma forma que encontramos de manter
-            você atualizado com os estudos disponibilizados aqui.
-        </p>
-    </section>
-
-
-
-
-    <section id="tks_section">
+    <section>
         <div class="message">
             <div>
                 <h1>Olá, <span>{{name}}</span></h1>
@@ -88,7 +61,7 @@
 
 
 {% block footer %}
-    <p id="vetor_atribuicao" style="display: none;">
+    <p id="vetor_atribuicao">
         <a href="https://storyset.com/event">Event illustrations by Storyset</a>
     </p>
 {% endblock %}
