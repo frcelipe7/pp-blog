@@ -55,13 +55,15 @@
 
     <aside>
         <ul>
-            <a href="/"><li>Home</li></a>
+            <a href="{% url 'index' %}"><li>Home</li></a>
+            <a href="{% url 'search' %}"><li>Buscar</li></a>
+            <a href="{% url 'devocionais' %}"><li>Devocionais</li></a>
+            <a href="{% url 'newsletter' %}"><li>Newsletter</li></a>
+            <a href="{% url 'about' %}"><li>Sobre nós</li></a>
             {% if user.is_superuser %}
                 <a href="/adicionar"><li>Adicionar</li></a>
             {% endif %}
-            <a href="{% url 'newsletter' %}"><li>Newsletter</li></a>
 
-            <a href="/"><li>Menu 3</li></a>
             <a href="/"><li>Menu 4</li></a>
             <a href="/"><li>Menu 5</li></a>
             <a href="/"><li>Menu 6</li></a>
@@ -79,26 +81,8 @@
                 </span>
                 <p>Pela Palavra</p>
             </a>
-        </div>
-        <div class="footer_content">
-            <div class="menu_footer">
-                <ul>
-                    <h4>Menu</h4>
-                    <a href="{% url 'index' %}"><li>Home</li></a>
-                    {% if user.is_superuser %}
-                        <a href="/adicionar"><li>Adicionar</li></a>
-                    {% endif %}
-                    <a href="{% url 'devocionais' %}"><li>Devocionais</li></a>
-                    <a href="{% url 'newsletter' %}"><li>Newsletter</li></a>
-                </ul>
-            </div>
-
-            {% block footer %}
-            {% endblock %}
 
             <div class="redes_sociais">
-                <div class="line"></div>
-
                 <a href="https://www.instagram.com/" target="_blank">
                     <div class="icon insta">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -123,8 +107,8 @@
                         </svg>
                     </div>
                 </a>
-
-                <a href="" target="_parent">
+    
+                <a href="" target="_blank">
                     <div class="icon mail">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <!--! Font Awesome Pro 6.1.1 by @fontawesome - 
@@ -139,9 +123,25 @@
                         </svg>
                     </div>
                 </a>
-
-                <div class="line"></div>
             </div>
+        </div>
+        <div class="footer_content">
+            <div class="menu_footer">
+                <ul>
+                    <h4>Menu</h4>
+                    <a href="{% url 'index' %}"><li>Home</li></a>
+                    <a href="{% url 'search' %}"><li>Buscar</li></a>
+                    <a href="{% url 'devocionais' %}"><li>Devocionais</li></a>
+                    <a href="{% url 'newsletter' %}"><li>Newsletter</li></a>
+                    <a href="{% url 'about' %}"><li>Sobre nós</li></a>
+                    {% if user.is_superuser %}
+                        <a href="/adicionar"><li>Adicionar</li></a>
+                    {% endif %}
+                </ul>
+            </div>
+
+            {% block footer %}
+            {% endblock %}
         </div>
 
         <div class="developed_by"></div>

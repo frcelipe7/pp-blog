@@ -117,8 +117,17 @@ def send_email(devocional_theme, verse, referencia, devocional_id, method, confi
 
 def index(request):
     devocionais = createDevocional.objects.order_by('-id')
+    twelve_devo = []
+    count = 0
+
+    for devo in devocionais:
+        if count >= 4: break
+
+        twelve_devo.append(devo)
+        count += 1
+
     return render(request, 'app_blog/home.html', {
-        'devocionais': devocionais
+        'devocionais': twelve_devo
     })
 
 
@@ -224,6 +233,12 @@ def adicionar(request):
 def search(request):
     keyword_search = request.GET.get("keyword_search", "")
 
+    if keyword_search == "":
+        return render(request, 'app_blog/search.html', {
+            "keyword_search": None,
+            'not_found': False
+        })
+
     not_found = False
 
     all_devocionais = createDevocional.objects.all()
@@ -249,7 +264,10 @@ def search(request):
 
 
 def devocionais(request):
-    pass
+    devocionais = createDevocional.objects.order_by('-id')
+    return render(request, 'app_blog/see_devocionais.html', {
+        'devocionais': devocionais
+    })
 
 
 def newsletter(request):
@@ -289,3 +307,7 @@ def email_registered(request):
     for user in all_users_signedin:
         emails_list.append(user.email)
     return JsonResponse([email for email in emails_list], safe=False)
+
+
+def about(request):
+    return render(request, 'app_blog/about.html')

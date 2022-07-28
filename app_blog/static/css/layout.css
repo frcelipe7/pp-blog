@@ -238,7 +238,9 @@ aside ul li:hover {
         margin-left: 50px;
     }
     .topo-fixed .content-buttons .button {display: none;}
-    .topo-fixed .content-buttons .search {display: flex;}
+    .topo-fixed .content-buttons .search {display: none;}
+    .topo-fixed {justify-content: center;}
+    .topo-fixed .logo {margin: 0;}
 }
 
 
@@ -247,17 +249,57 @@ aside ul li:hover {
 footer {
     width: 100%; height: auto;
     background-color: var(--escura-2);
-    border-radius: 5px 5px 0 0;
+    padding: 10px 80px;
+    padding-bottom: 40px;
+}
+
+@media (max-width: 620px) {
+    footer {
+        padding: 20px;
+        padding-bottom: 30px;
+    }
 }
 
 footer .logo_footer {
     width: 100%; height: 70px;
-    padding: 0 60px;
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.137);
-    border-radius: 5px 5px 0 0;
+    justify-content: space-between;
+    border-bottom: 1px solid #fff;
 }
+
+footer .logo_footer .redes_sociais {
+    width: 200px; height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: end;   
+}
+
+footer .logo_footer .redes_sociais a {
+    margin: 5px;
+    border-radius: 30px;
+}
+
+footer .logo_footer .redes_sociais .icon {
+    width: 35px; height: 35px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+footer .logo_footer .redes_sociais .icon svg {
+    width: 25px; height: 25px;
+    fill: var(--quinta);
+    transition: .3s;
+}
+
+footer .logo_footer .redes_sociais .icon:hover > svg {
+    transform: scale(1.1);
+    fill: var(--quinta-hover);
+}
+
 
 footer .logo_footer .logo {
     width: 190px;
@@ -282,11 +324,12 @@ footer .logo_footer .logo .material-symbols-outlined {
 
 footer .footer_content {
     width: 100%; height: auto;
-    padding: 40px;
+    padding: 30px 0;
+    border-bottom: 2px solid var(--quinta);
 }
 
 footer #vetor_atribuicao {
-    margin: 40px 0;
+    margin: 20px 0;
 }
 
 footer #vetor_atribuicao a {
@@ -303,16 +346,12 @@ footer .footer_content ul {
 footer ul h4 {
     color: #f2f2f2;
     font-weight: 500;
-    margin: 0 2px;
-    padding: 0 10px;
 }
 
 footer ul li {
     height: 30px;
-    margin: 0 2px;
     transition: .3s;
     font-weight: 300;
-    padding: 0 10px;
 }
 
 footer ul li:hover {
@@ -323,40 +362,4 @@ footer ul li:hover {
 footer ul a {
     text-decoration: none;
     color: #cbcbcb;
-}
-
-footer .footer_content .redes_sociais {
-    width: 100%; height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;   
-}
-
-footer .footer_content .redes_sociais .line {
-    width: 100%; height: 2px;
-    background-color: var(--quinta);
-}
-
-footer .footer_content .redes_sociais a {
-    margin: 5px;
-    border-radius: 30px;
-}
-
-footer .footer_content .redes_sociais .icon {
-    width: 40px; height: 40px;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-footer .footer_content .redes_sociais .icon svg {
-    width: 30px; height: 30px;
-    fill: var(--quinta);
-    transition: .3s;
-}
-
-footer .footer_content .redes_sociais .icon:hover > svg {
-    width: 30px; height: 30px;
-    fill: var(--quinta-hover);
 }

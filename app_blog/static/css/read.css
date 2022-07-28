@@ -24,7 +24,7 @@
 
 @media (max-width: 620px) {
     .block {
-        padding: 30px 00px;
+        padding: 0px 0;
     }
 }
 
@@ -47,7 +47,7 @@
         border-radius: 0px;
         border: none;
         padding: 70px 20px;
-        border-top: 20px solid var(--quinta);
+        padding-top: 0;
         box-shadow: 0 5px 1em var(--escura);
     }
 }
@@ -100,6 +100,13 @@
 .text-content .text {
     text-align: justify;
     margin: 0 70px;
+}
+
+@media (max-width: 620px) {
+    .text-content .text {
+        text-align: justify;
+        margin: 0 20px;
+    }
 }
 
 .text blockquote {

@@ -6,17 +6,28 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/devocionais_content.css' %}">
+
     <link rel="stylesheet" href="{% static 'css/search.css' %}">
 {% endblock %}
 
 
 {% block body %}
     <div class="search_form">
-        <input id="second_search" type="text" placeholder="Buscar" value="{{keyword_search}}">
+        {% if keyword_search == None %}
+            <input id="second_search" type="text" placeholder="Buscar">
+        {% else %}
+            <input id="second_search" type="text" placeholder="Buscar" value="{{keyword_search}}">
+        {% endif %}
         <button>Buscar</button>
     </div>
     <section class="devocionais">
-        <h1>Pesquisando por "{{keyword_search}}"</h1>
+        {% if keyword_search == None %}
+            <h1 class="search_title">Pesquisar</h1>
+        {% else%}
+            <h1 class="search_title">Pesquisando por "{{keyword_search}}"</h1>
+        {% endif %}
+
         {% if not_found %}
             <p>
                 {{not_found}}

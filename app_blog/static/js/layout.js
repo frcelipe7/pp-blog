@@ -19,9 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const search_button = document.querySelector(".content-buttons .search button");
     const search_input = document.querySelector(".content-buttons .search input");
+
+    const site_domain = "http://127.0.0.1:8000";
     
     function search(search) {
-        const site_domain = "http://127.0.0.1:8000";
         window.location.href = `${site_domain}/search?keyword_search=${search}`;
     };
     

@@ -8,6 +8,8 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/newsletter.css' %}">
+    <style>svg#freepik_stories-festivities:not(.animated) .animable {opacity: 0;}svg#freepik_stories-festivities.animated #freepik--background-simple--inject-14 {animation: 3s Infinite  linear wind;animation-delay: 0s;}svg#freepik_stories-festivities.animated #freepik--Confetti--inject-14 {animation: 0.7s 1 forwards ease-in slideDown,3s Infinite  linear floating;animation-delay: 0s,1.2s;}            @keyframes wind {                0% {                    transform: rotate( 0deg );                }                25% {                    transform: rotate( 1deg );                }                75% {                    transform: rotate( -1deg );                }            }                    @keyframes slideDown {                0% {                    opacity: 0;                    transform: translateY(-30px);                }                100% {                    opacity: 1;                    transform: translateY(0);                }            }                    @keyframes floating {                0% {                    opacity: 1;                    transform: translateY(0px);                }                50% {                    transform: translateY(-10px);                }                100% {                    opacity: 1;                    transform: translateY(0px);                }            }        </style>
+
 {% endblock %}
 
 
@@ -30,11 +32,11 @@
     <section class="text_section">
         <h2>O que é uma Newsletter?</h2>
         <p>
-            Uma Newsletter é uma forma de cominicação onde você ficará atualizado
-            sobre as postagens que são feitas aqui no site. Cada vês que adicionarmos
+            Uma Newsletter é uma forma de comunicação para lhe atualizar
+            sobre as postagens que são feitas aqui no site. Cada vez que adicionarmos
             um novo estudo bíblico você receberá uma notificação no email cadastrado
             com um link para o estudo. Essa é uma forma que encontramos de manter
-            você atualizado com os estudos disponibilizados aqui.
+            você por dentro dos estudos disponibilizados aqui.
         </p>
     </section>
 

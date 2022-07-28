@@ -1,0 +1,26 @@
+{% extends 'app_blog/layout.html' %}
+{% load static %}
+
+{% block tilte %}Pela Palavra{% endblock %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/devocionais_content.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="search_form">
+        <input id="second_search" type="text" placeholder="Buscar" value="{{keyword_search}}">
+        <button>Buscar</button>
+    </div>
+    <section class="devocionais">
+        <div class="content_header">
+            <h1>Devocionais</h1>
+        </div>
+        {% include "app_blog/devocionais_content.html" %}
+
+    </section>
+{% endblock %}

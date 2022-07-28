@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "6cec-2804-3e04-418-8b01-349f-4335-76ab-719.sa.ngrok.io"
+    "4d11-2804-3e04-414-2701-5463-f017-dff2-88f0.sa.ngrok.io"
 ]
 
 # Application definition
