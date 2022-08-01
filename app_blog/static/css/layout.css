@@ -244,6 +244,12 @@ aside ul li:hover {
 }
 
 
+/*//////    BLOCK_BODY    //////*/
+section.block_body {
+    min-height: 600px;
+}
+
+
 
 /*//////    FOOTER    //////*/
 footer {

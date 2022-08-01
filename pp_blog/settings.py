@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "4d11-2804-3e04-414-2701-5463-f017-dff2-88f0.sa.ngrok.io"
 ]
 
 # Application definition
@@ -126,6 +125,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'app_blog/static')
 ]
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '{}/app_blog/static/images/devocionais'.format(BASE_DIR)
+
 
 
 # Default primary key field type

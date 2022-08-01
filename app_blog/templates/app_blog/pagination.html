@@ -1,0 +1,47 @@
+
+
+{% if keyword_search %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a class="first first_and_last" href="?keyword_search={{keyword_search}}&page=1">1</a>
+            <a class="previous page_pass_pp" href="?keyword_search={{keyword_search}}&page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% else %}
+            <div class="desativado first first_and_last">1</div>
+            <div class="desativado previous page_pass_pp">Anterior</div>
+        {% endif %}
+
+        <span class="current">
+            {{ page_obj.number }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="prox page_pass_pp" href="?keyword_search={{keyword_search}}&page={{ page_obj.next_page_number }}">Próxima</a>
+            <a class="last first_and_last" href="?keyword_search={{keyword_search}}&page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+        {% else %}
+            <div class="desativado prox page_pass_pp">Próxima</div>
+            <div class="desativado last first_and_last">{{ page_obj.paginator.num_pages }}</div>
+        {% endif %}
+    </div>
+{% else %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a class="first first_and_last" href="?page=1">1</a>
+            <a class="previous page_pass_pp" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% else %}
+            <div class="desativado first first_and_last">1</div>
+            <div class="desativado previous page_pass_pp">Anterior</div>
+        {% endif %}
+
+        <span class="current">
+            {{ page_obj.number }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="prox page_pass_pp" href="?page={{ page_obj.next_page_number }}">Próxima</a>
+            <a class="last first_and_last" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+        {% else %}
+            <div class="desativado prox page_pass_pp">Próxima</div>
+            <div class="desativado last first_and_last">{{ page_obj.paginator.num_pages }}</div>
+        {% endif %}
+    </div>
+{% endif %}

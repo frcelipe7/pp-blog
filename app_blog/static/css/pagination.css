@@ -1,0 +1,40 @@
+.pagination {
+    width: 80%; height: 40px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.pagination,
+.pagination .current {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination .current {
+    width: 35px; height: 35px;
+    background-color: var(--quinta);
+    color: #fff;
+    cursor: default;
+}
+
+.pagination .current,
+.pagination .first_and_last {
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.pagination .page_pass_pp,
+.pagination .first_and_last {
+    border: 1px solid var(--quinta);
+    padding: 0 10px;
+    color: var(--quinta);
+    text-decoration: none;
+}
+
+.pagination .desativado {
+    color: gray;
+    border-color: gray;
+    opacity: 0.6;
+    cursor: default;
+}

@@ -1,17 +1,17 @@
-from ast import keyword
-from venv import create
 from django.http import request, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from django.views.generic import ListView
 from django.shortcuts import render
 from django.urls import reverse
 from .models import *
 
 from markdown2 import Markdown
-import calendar
-import locale
-import smtplib
 import email.message
+import calendar
+import smtplib
+import locale
 import time
 
 
@@ -88,7 +88,6 @@ def disparar_email(user, corpo_email):
         s.starttls()
         s.login(msg['From'], password)
         s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
-        print("Email enviado")
 
 
 def send_email(devocional_theme, verse, referencia, devocional_id, method, confirm_email, confirm_username):
@@ -174,7 +173,7 @@ def devocional(request, id):
         'date': date
     })
 
-# @login_required
+
 def adicionar(request):
     if request.user.is_anonymous:
         return HttpResponseRedirect(reverse("index"))
@@ -182,7 +181,7 @@ def adicionar(request):
         return HttpResponseRedirect(reverse("index"))
     if request.method == "POST":
         theme = request.POST['theme']
-        # image = request.FILE['image']
+        image = request.FILES['image']
         verse = request.POST['verse']
         reference = request.POST['reference']
         text = request.POST['text']
@@ -195,6 +194,7 @@ def adicionar(request):
         try:
             new_devocional = createDevocional(
                 theme=theme,
+                image=image,
                 verse=verse,
                 reference=reference,
                 text=text
@@ -230,44 +230,58 @@ def adicionar(request):
     return render(request, 'app_blog/adicionar.html')
 
 
-def search(request):
-    keyword_search = request.GET.get("keyword_search", "")
+class SearchView(ListView):
+    def search(request):
+        keyword_search = request.GET.get("keyword_search", "")
 
-    if keyword_search == "":
+        if keyword_search == "":
+            return render(request, 'app_blog/search.html', {
+                "keyword_search": None,
+                'not_found': False
+            })
+
+        not_found = False
+
+        all_devocionais = createDevocional.objects.all()
+
+        return_devocionais = []
+
+        for devocional in all_devocionais:
+            if keyword_search.lower() in devocional.theme.lower():
+                return_devocionais.append(devocional)
+            elif keyword_search.lower() in devocional.reference.lower():
+                return_devocionais.append(devocional)
+            elif keyword_search.lower() in devocional.text.lower():
+                return_devocionais.append(devocional)
+        
+        if return_devocionais.__len__() == 0:
+            not_found = f'Não foram encontrados resultados para a pesquisa "{keyword_search}". Tente utilizar outra palavra-chave.'
+        
+        paginator = Paginator(return_devocionais, 12)
+
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        
         return render(request, 'app_blog/search.html', {
-            "keyword_search": None,
-            'not_found': False
+            'devocionais': page_obj,
+            'page_obj': page_obj,
+            "keyword_search": keyword_search,
+            'not_found': not_found
         })
 
-    not_found = False
 
-    all_devocionais = createDevocional.objects.all()
+class DevocionalView(ListView):
+    def devocionais(request):
+        devocionais = createDevocional.objects.order_by('-id')
+        paginator = Paginator(devocionais, 12)
 
-    return_devocionais = []
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
 
-    for devocional in all_devocionais:
-        if keyword_search.lower() in devocional.theme.lower():
-            return_devocionais.append(devocional)
-        elif keyword_search.lower() in devocional.reference.lower():
-            return_devocionais.append(devocional)
-        elif keyword_search.lower() in devocional.text.lower():
-            return_devocionais.append(devocional)
-    
-    if return_devocionais.__len__() == 0:
-        not_found = f'Não foram encontrados resultados para a pesquisa "{keyword_search}". Tente utilizar uma outra palavra-chave.'
-    
-    return render(request, 'app_blog/search.html', {
-        'response': return_devocionais,
-        "keyword_search": keyword_search,
-        'not_found': not_found
-    })
-
-
-def devocionais(request):
-    devocionais = createDevocional.objects.order_by('-id')
-    return render(request, 'app_blog/see_devocionais.html', {
-        'devocionais': devocionais
-    })
+        return render(request, 'app_blog/see_devocionais.html', {
+            'devocionais': page_obj,
+            'page_obj': page_obj
+        })
 
 
 def newsletter(request):
