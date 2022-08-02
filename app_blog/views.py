@@ -246,13 +246,23 @@ class SearchView(ListView):
 
         return_devocionais = []
 
+
+        for devocional in all_devocionais:
+            if keyword_search.lower() == devocional.theme.lower():
+                if devocional not in return_devocionais:
+                    return_devocionais.append(devocional)
         for devocional in all_devocionais:
             if keyword_search.lower() in devocional.theme.lower():
-                return_devocionais.append(devocional)
-            elif keyword_search.lower() in devocional.reference.lower():
-                return_devocionais.append(devocional)
-            elif keyword_search.lower() in devocional.text.lower():
-                return_devocionais.append(devocional)
+                if devocional not in return_devocionais:
+                    return_devocionais.append(devocional)
+        for devocional in all_devocionais:
+            if keyword_search.lower() in devocional.reference.lower():
+                if devocional not in return_devocionais:
+                    return_devocionais.append(devocional)
+        for devocional in all_devocionais:
+            if keyword_search.lower() in devocional.text.lower():
+                if devocional not in return_devocionais:
+                    return_devocionais.append(devocional)
         
         if return_devocionais.__len__() == 0:
             not_found = f'Não foram encontrados resultados para a pesquisa "{keyword_search}". Tente utilizar outra palavra-chave.'
